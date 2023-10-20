@@ -81,6 +81,12 @@ async function run() {
 
      // Cart related api
 
+     app.get('/carts', async (req, res) => {
+      const cursor = cartsCollection.find();
+      const carts = await cursor.toArray();
+      res.send(carts);
+  })
+
      app.post('/carts', async (req, res) => {
       const newCart = req.body;
       console.log(newCart);
